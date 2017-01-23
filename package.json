@@ -1,0 +1,34 @@
+{
+  "name": "hof-component-date",
+  "version": "1.0.0",
+  "description": "A hof middleware for rendering and processing 3 part date fields",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/UKHomeOfficeForms/hof-component-date"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "test": "mocha"
+  },
+  "author": "UKHomeOffice",
+  "license": "MIT",
+  "dependencies": {
+    "async": "^2.1.4",
+    "hof-controllers": "^5.0.0",
+    "hof-form-controller": "^2.0.0",
+    "hof-form-wizard": "^1.1.0",
+    "lodash": "^4.17.4",
+    "moment": "^2.17.1"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "eslint": "^3.14.0",
+    "eslint-config-homeoffice": "^2.0.0",
+    "mocha": "^3.2.0",
+    "proxyquire": "^1.7.10",
+    "sinomocha": "^0.2.4",
+    "sinon": "^1.17.7",
+    "sinon-chai": "^2.8.0"
+  }
+}
