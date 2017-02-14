@@ -23,3 +23,5 @@ The following optional configuration options are supported:
 
 * `validate {String|Array}` - validators to use on the processed date field
 * `template` - an absolute path to an alternate template.
+* `dayOptional {Boolean}` - day defaults to `01` if omitted. Defaults to `false`
+* `monthOptional {Boolean}` - month defaults to `01` if omitted. If true then also forces `dayOptional` to be true. Defaults to `false`
