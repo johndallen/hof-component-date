@@ -3,9 +3,5 @@ node_js:
   - "4"
   - "6"
 
-cache:
-  directories:
-    - node_modules
-
 before_install:
   - if [[ `npm -v` != 3* ]]; then npm i -g npm@3; fi
