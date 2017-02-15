@@ -4,9 +4,9 @@ A component for handling the rendering and processing of 3-input date fields use
 
 ##Usage
 
-fields.js
+In your fields config:
 ```js
-const dateComponent = require('hof-component-Date');
+const dateComponent = require('hof-component-date');
 
 module.exports = {
   'date-field': dateComponent('date-field', {
