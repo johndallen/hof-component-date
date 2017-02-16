@@ -130,6 +130,10 @@ describe('Date Component', () => {
       let next;
       beforeEach(() => {
         next = sinon.stub();
+        req.form.options = {
+          fields: {}
+        };
+        req.translate = key => key;
         res.locals = {
           fields: [{
             key: 'date-field'
