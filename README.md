@@ -25,3 +25,26 @@ The following optional configuration options are supported:
 * `template` - an absolute path to an alternate template.
 * `dayOptional {Boolean}` - day defaults to `01` if omitted. Defaults to `false`
 * `monthOptional {Boolean}` - month defaults to `01` if omitted. If true then also forces `dayOptional` to be true. Defaults to `false`
+
+##Labels
+
+The three intermedate fields have fallback labels of Day, Month and Year, however custom labels can be used by including the translation at the following path:
+
+fields.json
+```json
+{
+  "field-name": {
+    "parts": {
+      "day": {
+        "label": "Custom Day Label"
+      },
+      "month": {
+        "label": "Custom Month Label"
+      },
+      "year": {
+        "label": "Custom Year Label"
+      }
+    }
+  }
+}
+```
