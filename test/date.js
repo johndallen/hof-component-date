@@ -144,7 +144,16 @@ describe('Date Component', () => {
 
       it('calls res.render with template and key', () => {
         date.hooks['pre-render'](req, res, next);
-        expect(res.render).to.have.been.calledWith(path.resolve(__dirname, '../templates/date.html'), { key: 'date-field' });
+        expect(res.render).to.have.been.calledWith(path.resolve(__dirname, '../templates/date.html'), { error: undefined, key: 'date-field' });
+      });
+
+      it('passes error to the template if present', () => {
+        const error = { message: 'error' };
+        req.form.errors = {
+          'date-field': error
+        };
+        date.hooks['pre-render'](req, res, next);
+        expect(res.render).to.have.been.calledWith(path.resolve(__dirname, '../templates/date.html'), { error, key: 'date-field' });
       });
 
       it('calls next with an error if res.render calls callback with err', () => {
