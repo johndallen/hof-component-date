@@ -1,6 +1,6 @@
 {
   "name": "hof-component-date",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "A hof middleware for rendering and processing 3 part date fields",
   "main": "index.js",
   "repository": {
