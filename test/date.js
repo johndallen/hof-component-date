@@ -142,9 +142,9 @@ describe('Date Component', () => {
         res.render = sinon.stub();
       });
 
-      it('calls res.render with template & key. It also calls it with legendClassName as \'\' and legend & hint as null', () => {
+      it('calls res.render with template & key.', () => {
         date.hooks['pre-render'](req, res, next);
-        expect(res.render).to.have.been.calledWith(path.resolve(__dirname, '../templates/date.html'), { key: 'date-field', legend: null, legendClassName: '', hint: null, error: undefined});
+        expect(res.render).to.have.been.calledWith(path.resolve(__dirname, '../templates/date.html'), sinon.match({key: 'date-field'}));
       });
 
       it('passes error to the template if present', () => {
@@ -153,25 +153,29 @@ describe('Date Component', () => {
           'date-field': error
         };
         date.hooks['pre-render'](req, res, next);
-        expect(res.render).to.have.been.calledWith(path.resolve(__dirname, '../templates/date.html'), { error, key: 'date-field', legend: null, legendClassName: '', hint: null });
+        expect(res.render).to.have.been.calledWith(sinon.match.string, sinon.match({error}));
       });
 
-      it('calls res.render with template, key, legend and hint with values NOT null OR empy string', () => {
+      it('calls res.render with a legend and hint', () => {
         req.translate = sinon.stub();
         req.translate.withArgs('fields.date-field.legend').returns('you legend');
         req.translate.withArgs('fields.date-field.hint').returns('some hint');
         date.hooks['pre-render'](req, res, next);
-        expect(res.render).to.have.been.calledWith(path.resolve(__dirname, '../templates/date.html'), { error: undefined, key: 'date-field', legendClassName: '', legend: 'you legend', hint: 'some hint' });
+        const args = res.render.lastCall.args;
+        expect(args[1]).to.have.property('legend').and.to.equal('you legend');
+        expect(args[1]).to.have.property('hint').and.to.equal('some hint');
       });
 
-      it('calls res.render with template, key, legend and hint with values NOT null OR empy string', () => {
+      it('checks the legendClassName and the value', () => {
         date = dateComponent('date-field', {
           legend: {
             className: 'testClass'
           }
         });
         date.hooks['pre-render'](req, res, next);
-        expect(res.render).to.have.been.calledWith(path.resolve(__dirname, '../templates/date.html'), { error: undefined, key: 'date-field', legendClassName: 'testClass', legend: null, hint: null });
+        const args = res.render.lastCall.args;
+        expect(args[1]).to.have.property('legendClassName');
+        expect(args[1].legendClassName).to.equal('testClass');
       });
 
       it('calls next with an error if res.render calls callback with err', () => {
