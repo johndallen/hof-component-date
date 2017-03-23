@@ -97,7 +97,6 @@ describe('Date Component', () => {
         req.form.values = {
           'date-field': dateValue
         };
-        req.sessionModel.get.withArgs('date-field').returns(dateValue);
       });
 
       it('extends req.form.values with the individual date parts', () => {
