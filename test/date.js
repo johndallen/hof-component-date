@@ -49,6 +49,26 @@ describe('Date Component', () => {
     expect(date.validate).to.deep.equal(expected);
   });
 
+  it('always adds a `date` validator', () => {
+    const expected = [
+      'date'
+    ];
+    const date = dateComponent('date-field', {});
+    expect(date).to.have.property('validate');
+    expect(date.validate).to.deep.equal(expected);
+  });
+
+  it('only adds one `date` validator', () => {
+    const expected = [
+      'date'
+    ];
+    const date = dateComponent('date-field', {
+      validate: 'date'
+    });
+    expect(date).to.have.property('validate');
+    expect(date.validate).to.deep.equal(expected);
+  });
+
   describe('GET pipeline', () => {
     let date;
     beforeEach(() => {
