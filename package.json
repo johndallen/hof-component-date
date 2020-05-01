@@ -10,12 +10,15 @@
   "scripts": {
     "test:lint": "eslint .",
     "test:unit": "mocha",
-    "test": "npm run test:lint && npm run test:unit"
+    "test": "npm run test:lint && npm run test:unit",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "author": "UKHomeOffice",
   "license": "MIT",
   "dependencies": {
-    "lodash": "^4.17.4"
+    "lodash": "^4.17.4",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "chai": "^3.5.0",
@@ -25,5 +28,6 @@
     "reqres": "^1.2.2",
     "sinon": "^1.17.7",
     "sinon-chai": "^2.8.0"
-  }
+  },
+  "snyk": true
 }
